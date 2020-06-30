@@ -39,20 +39,24 @@ String.prototype.highlightEntities = function (data) {
 
   content = this
 
-  for (var i = data.namedEntities.length-1; i >= 0; i--) {
-    start = data.namedEntities[i].start_char
-    end = data.namedEntities[i].end_char
-    type = data.namedEntities[i].type
+  for (var i = data.named_entities.length-1; i >= 0; i--) {
+    start = data.named_entities[i].start_char
+    end = data.named_entities[i].end_char
+    type = data.named_entities[i].type
 
     try {
-      id = data.namedEntities[i].best_candidate.uri
-      label = data.namedEntities[i].best_candidate.label
-      score = data.namedEntities[i].best_candidate.local_score
-    } catch (TypeError) {
+      id = data.named_entities[i].best_candidate.uri
+      label = data.named_entities[i].best_candidate.label
+      score = data.named_entities[i].best_candidate.local_score
+    } catch (error) {
+      if (error instanceof TypeError) {
       id = "NIL"
       label = "NIL"
       score = "0"
+    } else if (error instanceof NetworkError) {
+      console.log("siens")
     }
+  }
 
     tooltiptext = createTooltip(id, type, label, score)
     bg_color = backgroundColor(type)
