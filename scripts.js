@@ -100,3 +100,9 @@ function backgroundColor(type) {
       return "yellow"
   }
 }
+
+function dismiss() {
+  elem = document.getElementById('disclaimer')
+  elem.parentNode.removeChild(disclaimer)
+  console.log("meh")
+}

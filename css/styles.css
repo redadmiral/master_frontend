@@ -54,7 +54,43 @@
   line-height: 1.25em;
 }
 
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 .content {
+  flex: 1 0 auto;
   max-width: 500px;
   margin: auto;
+  flex: 1;
+}
+
+.disclaimer {
+  background-color: coral;
+  border-style: dotted;
+  border-width: thin;
+  margin: 15px;
+  padding: 5px;
+  font-size: 9px;
+}
+
+.footer {
+  max-width: 500px;
+  font-size: 9px;
+  color: grey;
+  margin: 10px;
+}
+
+.dismiss {
+  text-align: center;
+  color: white;
+  font-size: 10px;
+}
+
+.dismiss a {
+  text-decoration: none;
+  color: white;
 }

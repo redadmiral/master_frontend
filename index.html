@@ -7,8 +7,25 @@
   </head>
   <body>
     <div class="content">
-
     <h1 class="title is-1">Entity Linking</h1>
+    <div class="disclaimer" id="disclaimer">
+      <p>
+      This early version has various known issues, mainly:
+
+      <ul>
+        <li>No support of fuzzy search.</li>
+        <li>Long runtime due to missing parallelization of queries.</li>
+        <li>Recognized Entities without candidates are not displayed.</li>
+        <li>Output is not deterministic.</li>
+      </ul>
+      </p>
+
+      <p>If you experience any other problem don't hesitate to open an <a href="https://github.com/redadmiral/entity_linking">Issue on github.</a></p>
+
+      <p class="dismiss">
+      <a href="#" onclick="dismiss()">[dismiss]</a>
+      </p>
+    </div>
     <div class="input">
       <div class="text">
         <textarea id = "input-area" name="input-area" rows="8" cols="80"></textarea>
@@ -20,7 +37,10 @@
     <div id="output">
 
     </div>
-    <script src="./scripts.js" charset="utf-8"></script>
   </div>
+    <footer class="footer">
+      <p>This is an very early alpha version of an entity linking system developed as a part of a Knowledge Base Population System in my Master's Thesis. The underlying ideas, especially the optimization algorithm was first published by <a href="https://doi.org/10/ggp3w6">Alberto Parravicini: “Fast and Accurate Entity Linking via Graph Embedding.”</a>.</p>
+    </footer>
+    <script src="./scripts.js" charset="utf-8"></script>
   </body>
 </html>
