@@ -1,6 +1,6 @@
 console.log("load JS.")
 
-var endpoint = "http://localhost:8000"
+var endpoint = "http://master.marco-lehner.de:8000"
 
 function link_entities() {
   input = document.getElementById("input-area").value
@@ -12,7 +12,6 @@ function link_entities() {
       output = document.getElementById('output')
       output.innerHTML = data.content.highlightEntities(data)
     });
-
 
 }
 
@@ -105,4 +104,66 @@ function dismiss() {
   elem = document.getElementById('disclaimer')
   elem.parentNode.removeChild(disclaimer)
   console.log("meh")
+}
+
+function insert_example(markus) {
+  switch (markus) {
+    case "jurist":
+      example = "Markus Müller absolvierte sein Studium der Rechtswissenschaften an der Universität Bern 1987 mit dem Lizenziat. 1991 dissertierte er zum Thema „Zwangsmassnahmen als Instrument der Krankheitsbekämpfung – das Epidemiengesetz und die persönliche Freiheit“. 1992 erhielt er das Luzernische Anwaltspatent. Von 1993 bis 2004 war er stellvertretender Generalsekretär der Justiz-, Gemeinde- und Kirchendirektion des Kanton Bern. 2003 habilitierte er zum Thema „Das besondere Rechtsverhältnis – ein altes Rechtsinstitut neu gedacht“ und wurde 2004 Ordinarius für Staats- und Verwaltungsrecht an der Universität Bern. Müller ist zudem einer von 27 Erstunterzeichnern des Zürcher Appell, der sich gegen ein wirtschaftlich interessiertes Sponsoring von Forschung durch Unternehmen einsetzt."
+      break;
+    case "fussballer":
+      example = "Vermutlich eine der spektakulärsten Spieler-Verpflichtung in der Vereinsgeschichte konnte vor einigen Tagen der TSV Wachtendonk- Wankum verkünden. Sein Name: Markus Müller. Der 31- jährige Linksfuß wechselte vom FC Gießen aus der Hessenliga an den Niederrhein in die Bezirksliga. Müller wuchs in Eberswalde/Brandenburg auf, spielte unter anderem in der 2. Liga für Erzgebirge Aue, für den SC Babelsberg in der 3. Liga und in der Regionalliga bei Wormatia Worms und Kickers Offenbach."
+      break;
+    case "mediziner":
+      example = "Markus Müller maturierte 1985 am Theresianum in Wien und begann danach mit dem Studium der Humanmedizin an der Medizinischen Fakultät der Universität Wien. 1993 promovierte er „sub auspiciis praesidentis“ zum Doktor der gesamten Heilkunde. Zwischen 1993 und 2000 erfolgte seine Ausbildung zum Facharzt für Innere Medizin an den Universitätskliniken für Notfallmedizin und Innere Medizin I-III am Allgemeinen Krankenhaus Wien (AKH). 1995 absolvierte er einen Forschungsaufenthalt am Laboratory for Diabetes Research in Göteborg, Schweden zur Entwicklung der Mikrodialyse in der klinischen Forschung. 2000–2001 war er als Gastprofessor an der University of Florida tätig. 2004 wurde er zum Universitätsprofessor und Leiter der Universitätsklinik für Klinische Pharmakologie an der Medizinischen Universität Wien am AKH Wien ernannt. Markus Müller hat etwa 200 wissenschaftliche Publikationen veröffentlicht, unter anderem im New England Journal of Medicine."
+      break;
+    case "schauspieler":
+      example = "Markus Müller studierte Betriebswirtschaftslehre, Theaterwissenschaften, Germanistik und Philosophie in Bamberg, Erlangen und Mannheim. Während seines Studiums arbeitete er am Bamberger E.T.A.-Hoffmann-Theater als Regieassistent, Mitarbeiter in der Öffentlichkeitsarbeit und ab 1995 als Schauspieler und Regisseur. Von 1997 bis 2001 war Müller persönlicher Referent des Generalintendanten Ulrich Schwab am Nationaltheater Mannheim und von 2001 bis 2005 stellvertretender Generalintendant. Darüber hinaus arbeitete er als künstlerischer Leiter verschiedener Festivals und Theaterprojekte."
+      break;
+    }
+    textarea = document.getElementById("input-area")
+    textarea.value = example
+    }
+
+function expand() {
+  // I know that's not how it's done properly. Sry.
+  code = `
+        <p>
+        This early version has various known issues, mainly:
+
+        <ul>
+          <li>No support of fuzzy search.</li>
+          <li>Long runtime due to missing parallelization of queries.</li>
+          <li>Output is not deterministic.</li>
+          <li>Recognized Entities without candidates are not displayed.</li>
+          <li>Surnames coreferencing named persons are not resolved.</li>
+        </ul>
+        </p>
+
+        <p>If you experience any other problem don't hesitate to open an <a href="https://github.com/redadmiral/entity_linking">Issue on github.</a></p>
+        <p>And just in case you're wondering about the name: The idea of this thesis is from a colleague named Alberto Parravicini. He has a name twin who predicted the first living being in orbit would be a dog. That's the point where I started to associate freely and extended the naming convention of mediocre Indie bands to experimental software.</p>
+
+        <p class="dismiss">
+        <a href="#" onclick="dismiss()">[dismiss]</a>
+
+        </p>
+      `
+    box = document.getElementById("warning")
+    box.innerHTML = code
+
+}
+
+function examples() {
+  code = `
+  <p>There are many Markus Müllers in the world. Each button inserts an example text about a different Müller with a different occupation in the linking window above. The First Dog In Space will try it's best to distinguish those Müllers.</p>
+  <div class="button-wrapper">
+
+  <button type="button" name="link" onclick="insert_example('mediziner')">M.D.</button>
+  <button type="button" name="link" onclick="insert_example('jurist')">Lawyer</button>
+  <button type="button" name="link" onclick="insert_example('fussballer')">Football Player</button>
+  <button type="button" name="link" onclick="insert_example('schauspieler')">Actor</button>
+`
+  examples = document.getElementById("examples")
+  examples.innerHTML = code
+
 }
