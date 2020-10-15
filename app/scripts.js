@@ -2,6 +2,7 @@ console.log("load JS.")
 
 var endpoint = "http://master.marco-lehner.de:8000"
 
+
 function link_entities() {
   input = document.getElementById("input-area").value
 
@@ -69,7 +70,7 @@ String.prototype.highlightEntities = function (data) {
 
 function createTooltip(id, type, label, probability) {
 
-  id_short = "wdt:" + id.split("/").slice(-1)[0]
+  id_short = id.split("/").slice(-1)[0]
 
   return `
   <span class="tooltiptext">
@@ -135,7 +136,6 @@ function expand() {
           <li>No support of fuzzy search.</li>
           <li>Long runtime due to missing parallelization of queries.</li>
           <li>Output is not deterministic.</li>
-          <li>Recognized Entities without candidates are not displayed.</li>
           <li>Surnames coreferencing named persons are not resolved.</li>
         </ul>
         </p>
